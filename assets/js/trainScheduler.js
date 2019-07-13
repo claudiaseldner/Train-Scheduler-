@@ -14,50 +14,6 @@ var trainID = 0;
 var database = firebase.database();
 var lastDeleted = -1;
 
-$('#clock').text(moment().format("hh:mm:ss a"));
-setInterval(function(){
-  $('#clock').text(moment().format("hh:mm:ss a"));
-}, 1000);
-
-//calculate how many minutes until the next full minute
-var time = new Date();
-var secondsRemaining = (60 - time.getSeconds()) * 1000 - time.getMilliseconds();
-//use a timeout to start the interval at the next full minute
-setTimeout(function() {
-  //run initially, then again every minute
-  updateArrivalTimes();
-  setInterval(function(){
-    updateArrivalTimes();
-  }, 60000);
-}, secondsRemaining);
-
-
-
-// $("#submit").on("click", function(event) {
-//     console.log("submit");
-//   event.preventDefault();
-//   var inputTime = $("#time-input").val().trim();
- 
-//     var train = {
-//       name: $("#name-input").val().trim(),
-//       destination: $("#destination-input").val().trim(),
-//       firstTime: $("#time-input").val().trim(),
-//       frequency: $("#frequency-input").val().trim()
-//     };
-
-//     database.ref().push(train);
-//     $("#name-input").val("");
-//     $("#destination-input").val("");
-//     $("#time-input").val("");
-//     $("#frequency-input").val("");
-//   }
-//   else{
-//     //if an invalid first train time was entered, don't add it to the database and put a warning on screen.
-//     console.log("invalid");
-//     $("#time-warning").removeClass("hidden");
-//   }
-// });
-
   // Capture Button Click
   $("#submit").on("click", function(event) {
       console.log("submit");
